@@ -1,10 +1,10 @@
-def gradient_descent(x, y, theta0, theta1, alpha, num_iters, J):
+def gradient_descent(x, y, theta0, theta1, alpha, num_iters):
     m = len(y)  # number of training examples
 
     # Initialize theta0 and theta1 as lists with the initial values
     theta0 = [theta0]
     theta1 = [theta1]
-    J = [J]  # cost function initialization
+    J = []  # cost function initialization
 
     for el in range(num_iters):
         h = [theta0[-1] + theta1[-1] * x_i for x_i in x]  # hypothesis
