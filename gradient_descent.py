@@ -9,7 +9,7 @@
 # thetaj = thetaj - alpha * 1/m * sum(h(x) - y) 
 # j are the parameters of the hypothesis from j = 0 to n, in our case j = 0 and j = 1
 # The sum is on all the training examples from i = 0 to m
-# Meaning of algorith in math : thetaj = thetaj - alpha * dJ / dtheta
+# Meaning of algorith in math : thetaj = thetaj - alpha * dJ / dthetaj
 #
 # Source : https://www.simplilearn.com/tutorials/machine-learning-tutorial/cost-function-in-machine-learning
 # 
@@ -30,8 +30,11 @@ def gradient_descent(x, y, alpha, num_iters):
         h = [theta0[-1] + theta1[-1] * x_i for x_i in x]  # hypothesis
         error = [h_i - y_i for h_i, y_i in zip(h, y)]  # prediction error
 
-        theta0.append(theta0[-1] - alpha / m * sum(error)) # gradient descent for theta0
-        theta1.append(theta1[-1] - alpha / m * sum(e_i * x_i for e_i, x_i in zip(error, x))) # gradient descent for theta1
+        tmptheta0 = alpha / m * sum(error)  # step for theta0 : alpha * dJ / dtheta0
+        tmptheta1 = alpha / m * sum(e_i * x_i for e_i, x_i in zip(error, x))  # step for theta0 : alpha * dJ / dtheta1
+
+        theta0.append(theta0[-1] - tmptheta0) # gradient descent for theta0
+        theta1.append(theta1[-1] - tmptheta1) # gradient descent for theta1
 
         J.append(1 / (2 * m) * sum(e_i ** 2 for e_i in error)) # cost function J
 

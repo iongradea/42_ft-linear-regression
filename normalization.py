@@ -9,6 +9,5 @@ def normalize_minmax_list(list):
 def normalize_zscore_list(list):
     list_mean = np.mean(list, axis=0)
     list_std = np.std(list, axis=0)
-    print("mean : {} - std : {}".format(list_mean, list_std))
     list_normalized = (list - list_mean) / list_std
     return list_normalized, list_mean, list_std
