@@ -24,13 +24,23 @@ def program_mode():
         print("[program_mode - normalization] Default chosen : z-score!")
         normalization == 'z'
     try:
+        normalize_Y = input('[program_mode - normalize_Y] Do you want to normalize the Y values (y/n) ? Default is n ... ')
+        if normalize_Y == 'y':
+            print("[program_mode - normalize_Y] Y values will be normalized!")
+        else:
+            print("[program_mode - normalize_Y] Y values will not be normalized!")
+            normalize_Y == 'n'
+    except Exception as e:
+        print("[program_mode - normalize_Y] Y values will not be normalized!")
+        normalize_Y == 'n'
+    try:
         alpha = float(input("[program_mode - parameters] Please enter the alpha value (default is 0.01) : "))
         num_iters = int(input("[program_mode - parameters] Please enter the number of iterations (default is 10000) : "))
     except Exception as e:
         print("[program_mode - parameters] Default chosen : alpha = 0.01, num_iters = 10000")
         alpha = 0.01
         num_iters = 10000
-    return print_level, normalization, alpha, num_iters
+    return print_level, normalization, normalize_Y, alpha, num_iters
 
 def read_csv_file(filename):
     with open(filename, 'r') as csvfile:
