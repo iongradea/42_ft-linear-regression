@@ -5,8 +5,8 @@ from predict_price.model_utils import *
 from predict_price.global_vars import *
 
 def main_predict_price():
-    mileage_km = input_km()
     theta, y_norm_vars, normalization, normalize_y, plot_normalize_y, alpha, num_iters = read_from_json()
+    mileage_km = input_km()
     theta0, theta1 = theta
     min_y, max_y, std_y, mean_y = y_norm_vars
     print("[verbosity 1] theta0 = {}, theta1 = {}".format(theta0, theta1)) if verbosity >= 1 else None
