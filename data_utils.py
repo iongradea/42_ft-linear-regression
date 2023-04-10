@@ -1,46 +1,22 @@
 import csv
+import argparse
 
 def program_mode():
-    try:
-        print_level = int(input('[program_mode - print level] What print policy level do you want between : 0 (no print), 1 (basic info), 2 (debug) ? By default it is 1 ... '))
-        if print_level in [0, 1, 2]:
-            print("[program_mode - print level] Print policy level chosen : {}".format(print_level))
-        else:
-            print("[program_mode - print level] Default chosen : 1")
-            print_level = 1
-    except Exception as e:
-        print("[program_mode - print level] Default chosen : 1")
-        print_level = 1
-    try:        
-        normalization = input('[program_mode - normalization] What normalization method do you want (z for z-score, m for minmax) ? Default is z-score ... ')
-        if normalization == 'm':
-            print("[program_mode - normalization] minmax normalization chosen!")
-        elif normalization == 'z':
-            print("[program_mode - normalization] z-score normalization chosen!")
-        else:
-            print("[program_mode - normalization] Default chosen : z-score!")
-            normalization == 'z'
-    except Exception as e:
-        print("[program_mode - normalization] Default chosen : z-score!")
-        normalization == 'z'
-    try:
-        normalize_Y = input('[program_mode - normalize_Y] Do you want to normalize the Y values (y/n) ? Default is n ... ')
-        if normalize_Y == 'y':
-            print("[program_mode - normalize_Y] Y values will be normalized!")
-        else:
-            print("[program_mode - normalize_Y] Y values will not be normalized!")
-            normalize_Y == 'n'
-    except Exception as e:
-        print("[program_mode - normalize_Y] Y values will not be normalized!")
-        normalize_Y == 'n'
-    try:
-        alpha = float(input("[program_mode - parameters] Please enter the alpha value (default is 0.01) : "))
-        num_iters = int(input("[program_mode - parameters] Please enter the number of iterations (default is 10000) : "))
-    except Exception as e:
-        print("[program_mode - parameters] Default chosen : alpha = 0.01, num_iters = 10000")
-        alpha = 0.01
-        num_iters = 10000
-    return print_level, normalization, normalize_Y, alpha, num_iters
+    # Create the argument parser
+    parser = argparse.ArgumentParser(description="Getting command line options")
+
+    # Add command-line options
+    parser.add_argument("-v", "--verbose", type=int, choices=[0, 1, 2], default=1, help="Enter the verbosity level : 0 (no print), 1 (basc info), 2 (debug)")
+    parser.add_argument("-n", "--normalization", type=str, choices=["m", "z"], default="z", help="Enter the normalization method : m for minmax, z for z-score")
+    parser.add_argument("-ny", "--normalize_y", type=str, choices=["y", "n"], default="n", help="Normalize y values (prices) : y for yes, n for no")
+    parser.add_argument("-pny", "--plot_normalize_y", type=str, choices=["y", "n"], default="n", help="Plot normalize y values (prices) : y for yes, n for no")
+    parser.add_argument("-a", "--alpha", type=float, default=0.01, help="Enter the alpha value")
+    parser.add_argument("-i", "--num_iters", type=int, default=1000, help="Enter the number of iterations")
+
+    # Parse the command-line options
+    args = parser.parse_args()
+
+    return args.verbose, args.normalization, args.normalize_y, args.plot_normalize_y, args.alpha, args.num_iters
 
 def read_csv_file(filename):
     with open(filename, 'r') as csvfile:

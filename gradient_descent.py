@@ -30,8 +30,8 @@ def gradient_descent(x, y, alpha, num_iters):
         h = [theta0[-1] + theta1[-1] * x_i for x_i in x]  # hypothesis
         error = [h_i - y_i for h_i, y_i in zip(h, y)]  # prediction error
 
-        tmptheta0 = alpha / m * sum(error)  # step for theta0 : alpha * dJ / dtheta0
-        tmptheta1 = alpha / m * sum(e_i * x_i for e_i, x_i in zip(error, x))  # step for theta0 : alpha * dJ / dtheta1
+        tmptheta0 = alpha / m * sum(error)  # step for theta0 : (alpha / m) * dJ / dtheta0
+        tmptheta1 = alpha / m * sum(e_i * x_i for e_i, x_i in zip(error, x))  # tep for theta1 : (alpha / m) * dJ / dtheta1
 
         theta0.append(theta0[-1] - tmptheta0) # gradient descent for theta0
         theta1.append(theta1[-1] - tmptheta1) # gradient descent for theta1
