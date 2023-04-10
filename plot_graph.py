@@ -13,10 +13,8 @@ def plot_graph(x_km, y_price, y_res, y_fn):
     ax1.scatter(x_km, y_res, marker="o", label='y_res')
 
     # Generate x values
-    # x = list(range(0, 250000, 1000))
     x_values = np.linspace(10000, 250000, 1000)
     # Calculate y values using the lambda function
-    # y_values = [y_fn(x) for x in x_values]
     y_values = y_fn(x_values)
     # Plot the function
     ax1.plot(x_values, y_values, color='green', label='y_fn')
@@ -47,4 +45,4 @@ def plot_graphs(x_km, y_price, y_res, J, y_fn):
     plt.ioff()
 
     # Keep the plot open until the user closes it
-    plt.show(block=True)
+    plt.show()

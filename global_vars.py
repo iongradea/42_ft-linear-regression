@@ -1,5 +1,8 @@
 import argparse
 
+data_file = "data.csv"
+res_file = "res.json"
+
 def program_mode():
     # Create the argument parser
     parser = argparse.ArgumentParser(description="Getting command line options")
