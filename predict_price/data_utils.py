@@ -23,8 +23,10 @@ def read_from_json():
             normalization = data['normalization']
             normalize_y = data['normalize_y']
             plot_normalize_y = data['plot_normalize_y']
+            alpha = data['alpha']
+            num_iters = data['num_iters']
     except Exception as e: 
         print("Error: {}".format(e))
         print("Please train the model first.")
         exit(1)
-    return theta, y_norm_vars, normalization, normalize_y, plot_normalize_y
+    return theta, y_norm_vars, normalization, normalize_y, plot_normalize_y, alpha, num_iters
