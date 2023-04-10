@@ -49,7 +49,7 @@ def train_model(x_km, y_price):
     else:
         theta0_res = theta0_norm[-1] - theta1_norm[-1] * mean_x / std_x
         theta1_res = theta1_norm[-1] / std_x
-    print("[verbosity 0] theta0 = {}, theta1 = {}".format(theta0_res, theta1_res)) if verbosity >= 1 else None
+    print("[verbosity 0] theta0 = {}, theta1 = {}".format(theta0_res, theta1_res)) if verbosity >= 0 else None
 
     # return results
     theta_res = [theta0_res, theta1_res]
