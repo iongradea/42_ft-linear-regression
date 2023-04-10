@@ -1,9 +1,9 @@
 #!/usr/local/bin/python3
 
-from gradient_descent import *
-from plot_graph import *
-from data_utils import *
-from global_vars import *
+from train_linear_regression.gradient_descent import *
+from train_linear_regression.plot_graph import *
+from train_linear_regression.data_utils import *
+from train_linear_regression.global_vars import *
 
 
 def main_linear_regression():
@@ -36,38 +36,3 @@ def main_linear_regression():
 
 if __name__ == "__main__":
     main_linear_regression()
-
-
-
-
-
-
-
-
-
-    # create predict_price function 
-    # predict_price = create_function(theta, y_norm_vars)
-
-
-
-
-
-
-
-
-
-# def create_function(theta, y_norm_vars):
-#     # assign values
-#     [theta0, theta1] = theta 
-#     [min_y, max_y, std_y, mean_y] = y_norm_vars
-
-#     # unormalize y if necessary
-#     if normalize_y == 'y':
-#         if normalization == 'm':
-#             predict_price = lambda x: (theta0 + theta1 * x) * (max_y - min_y) + min_y
-#         else:
-#             predict_price = lambda x: (theta0 + theta1 * x) * std_y + mean_y
-#     else:
-#         predict_price = lambda x: theta0 + theta1 * x
-#     return predict_price
-

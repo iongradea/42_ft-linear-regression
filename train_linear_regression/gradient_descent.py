@@ -1,6 +1,6 @@
-from model_utils import *
-from data_utils import *
-from global_vars import *
+from train_linear_regression.model_utils import *
+from train_linear_regression.data_utils import *
+from train_linear_regression.global_vars import *
 
 # train linear regression model
 def train_model(x_km, y_price):

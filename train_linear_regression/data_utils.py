@@ -1,6 +1,7 @@
 import csv
 import json
-from global_vars import *
+import os
+from train_linear_regression.global_vars import *
 
 
 def save_to_json(theta, y_norm_vars):
@@ -8,21 +9,21 @@ def save_to_json(theta, y_norm_vars):
     data = {}
     data['theta'] = theta
     data['y_norm_vars'] = y_norm_vars
+    data['verbosity'] = verbosity
     data['normalization'] = normalization
     data['normalize_y'] = normalize_y
     data['plot_normalize_y'] = plot_normalize_y
-    with open(res_file, 'w') as outfile:
-        json.dump(data, outfile)
-
-
-def read_from_json():
-    # read theta and y_norm_vars from json file
-    with open(res_file) as json_file:
-        data = json.load(json_file)
-        # return data
-        theta = data['theta']
-        y_norm_vars = data['y_norm_vars']
-    return theta, y_norm_vars
+    data['alpha'] = alpha
+    data['num_iters'] = num_iters
+    if not os.path.exists(res_dir):
+        os.makedirs(res_dir)
+        print("[verbosity 2] Directory created at {}".format(res_dir)) if verbosity >= 2 else None
+    try:
+        with open(res_file, 'w') as outfile:
+            json.dump(data, outfile)
+    except Exception as e:
+        print("Error: {}".format(e))
+        exit(1)
 
 
 def read_csv_file(filename):

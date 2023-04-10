@@ -1,5 +1,5 @@
 import numpy as np
-from global_vars import *
+from train_linear_regression.global_vars import *
 
 # function to create points for the graph
 def create_points(theta, y_norm_vars, x_km):

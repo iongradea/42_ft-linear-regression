@@ -1,7 +1,8 @@
 import argparse
 
-data_file = "data.csv"
-res_file = "res.json"
+data_file = "./data_file/data.csv"
+res_dir = "./model_res"
+res_file = res_dir + "/res.json"
 
 def program_mode():
     # Create the argument parser
