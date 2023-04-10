@@ -21,6 +21,25 @@ def create_points(theta, y_norm_vars, x_km):
     return y_res
 
 
+def create_function(theta, y_norm_vars):
+    # assign values
+    [theta0, theta1] = theta 
+    [min_y, max_y, std_y, mean_y] = y_norm_vars
+
+    # unormalize y if necessary
+    if normalize_y == 'y':
+        if plot_normalize_y == 'y':
+            predict_price = lambda x: theta0 + theta1 * x
+        else:
+            if normalization == 'm':
+                predict_price = lambda x: (theta0 + theta1 * x) * (max_y - min_y) + min_y
+            else:
+                predict_price = lambda x: (theta0 + theta1 * x) * std_y + mean_y
+    else:
+        predict_price = lambda x: theta0 + theta1 * x
+    return predict_price
+
+
 def read_csv_file(filename):
     with open(filename, 'r') as csvfile:
         csvreader = csv.reader(csvfile)
