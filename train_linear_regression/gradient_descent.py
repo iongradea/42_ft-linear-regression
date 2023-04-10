@@ -37,7 +37,7 @@ def train_model(x_km, y_price):
     
     # gradient descent and J (cost function) with normalized parameters theta0 and theta1 
     theta0_norm, theta1_norm, J = gradient_descent(x_train_norm, y_train, alpha, num_iters)
-    print("[verbosity 1] theta0_normalized = {}, theta1_normalized = {}, J = {}".format(theta0_norm[-1], theta1_norm[-1], J[-1])) if verbosity >= 1 else None
+    print("[verbosity 0] theta0_normalized = {}, theta1_normalized = {}, J = {}".format(theta0_norm[-1], theta1_norm[-1], J[-1])) if verbosity >= 0 else None
     print("[verbosity 1] min_y = {}, max_y = {}, std_y = {}, mean_y = {}".format(min_y, max_y, std_y, mean_y)) if verbosity >= 1 else None
     print("[verbosity 2] len(theta0_normalized) = {} and len(theta1_normalized) = {} and len(J) = {}".format(len(theta0_norm), len(theta1_norm), len(J))) if verbosity >= 2 else None
     

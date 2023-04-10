@@ -27,15 +27,19 @@ def save_to_json(theta, y_norm_vars):
 
 
 def read_csv_file(filename):
-    with open(filename, 'r') as csvfile:
-        csvreader = csv.reader(csvfile)
-        x_km = []
-        y_price = []
-        for row in csvreader:
-            x_km.append(row[0])
-            y_price.append(row[1])
-        x_km.pop(0)
-        y_price.pop(0)
+    try:
+        with open(filename, 'r') as csvfile:
+            csvreader = csv.reader(csvfile)
+            x_km = []
+            y_price = []
+            for row in csvreader:
+                x_km.append(row[0])
+                y_price.append(row[1])
+            x_km.pop(0)
+            y_price.pop(0)
+    except Exception as e:
+        print("Error: {}".format(e))
+        exit(1)
     return(x_km, y_price)
 
 
