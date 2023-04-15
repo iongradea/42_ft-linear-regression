@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3
+#!/usr/bin/env python3
 
 from predict_price.data_utils import *
 from predict_price.model_utils import *
